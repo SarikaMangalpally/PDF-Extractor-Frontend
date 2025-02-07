@@ -6,20 +6,14 @@ import { useRef } from 'react';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 
+import 'pdfjs-dist/build/pdf.worker.entry';
 
 import { usePdfStore } from '../store/usePdfStore';
 
-import packageJson from '../../package.json';
 
-const pdfjsVersion = packageJson.dependencies['pdfjs-dist'];
-
-// // interface PDFRendererProps {
-// //     url: string;
-// // }
 
 export default function PDFRenderer() {
     const {pdf_url} = usePdfStore()
-//     console.log(pdf_url)
     const viewerRef = useRef(null);
     const defaultLayoutPluginInstance = defaultLayoutPlugin();
     const highlightPluginInstance = highlightPlugin({
@@ -28,7 +22,8 @@ export default function PDFRenderer() {
 
     return (
         <div className='w-full'>
-            <Worker workerUrl={`https://unpkg.com/pdfjs-dist@${pdfjsVersion}/build/pdf.worker.min.js`}>
+            {/* <Worker workerUrl={`https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`}> */}
+            <Worker workerUrl={`/pdf.worker.min.js`}>
             {pdf_url ? (
                 <Viewer
                     fileUrl={pdf_url}
