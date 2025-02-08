@@ -7,7 +7,6 @@ export default function TranscriptViewer() {
             {
                 PdfText.length ? (
                     <>
-                        <p>
                         {
                             PdfText.map((page, pageIndex) => (
                                 <div key={pageIndex}>
@@ -20,14 +19,12 @@ export default function TranscriptViewer() {
                                                         <span key={textIndex}>
                                                             {text.text}{" "}
                                                             </span>
-                                                            ))}            
+                                                       ))}            
                                                 </p>
-            
                                             </div>
                                         ))}
                                 </div>
-                                ))}
-                        </p>
+                            ))}
                     </>
                 ) : ''
             }

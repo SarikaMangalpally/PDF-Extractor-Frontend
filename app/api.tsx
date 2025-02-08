@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_URL = 'http://127.0.0.1:8000';
+const API_URL = 'http://localhost:8000';
+
+// const API_URL = 'http://host.docker.internal:8000';
 
 export const uploadURL = (url: string) => {
   if (!url || !url.toLowerCase().endsWith(".pdf")) {

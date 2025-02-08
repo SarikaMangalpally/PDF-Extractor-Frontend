@@ -2,7 +2,7 @@
 import {Worker, Viewer, SpecialZoomLevel} from '@react-pdf-viewer/core';
 import {defaultLayoutPlugin} from '@react-pdf-viewer/default-layout';
 import { highlightPlugin, Trigger } from "@react-pdf-viewer/highlight"
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 
