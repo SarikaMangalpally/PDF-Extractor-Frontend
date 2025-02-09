@@ -1,4 +1,4 @@
-import { usePdfStore, type BboxOverlay } from "../store/usePdfStore"
+import {  usePdfStore, type Bbox, BboxOverlay,} from "../store/usePdfStore"
 // import { useState } from "react"
 
 interface TranscriptViewerProps {
@@ -9,35 +9,31 @@ export default function TranscriptViewer({onBboxClick}: TranscriptViewerProps) {
     const PdfText = usePdfStore((state) => state.pdf_text)
 
     return (
-        <div className="p-4 overflow-auto break-words whitespace-normal bg-white">
+        <div className="p-4 overflow-auto break-words whitespace-normal ">
             {
                 PdfText.length ? (
                     <>
                         {
                             PdfText.map((page, pageIndex) => (
-                                <div key={pageIndex}>
-                                    <h3>Page {page.page_number}</h3>
+                                <div key={pageIndex} className="my-5">
+                                    <h3 className="Bold my-10">Page {pageIndex}</h3>
                                     {
                                         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                        page.sections.map((section: { text_and_bboxes: { text: string, bbox: BboxOverlay }[] }, sectionIndex) => (
-                                            <div key={sectionIndex}>
+                                        page.sections.map((section: { text_and_bboxes: { text: string, bbox: Bbox}[] }, sectionIndex) => (
+                                            <div key={sectionIndex} className="">
                                                 {
                                                     section.text_and_bboxes.map(({text, bbox}, index) => (
                                                         <span key={index} className="hover:bg-yellow-200"
-                                                         onClick={() => onBboxClick(bbox)} >
-                                                            
+                                                        
+                                                        onClick={() => onBboxClick({
+                                                            page: pageIndex,
+                                                            bbox
+                                                        })} >                                                            
                                                             {`${text}${" "}`}
                                                         </span>
-                                                    
+                                            
                                                     ))
                                                 }
-                                                {/* <p className="my-4">
-                                                    {section.text_and_bboxes.map((text, textIndex) => (
-                                                        <span key={textIndex}>
-                                                            {text.text}{" "}
-                                                            </span>
-                                                       ))}            
-                                                </p> */}
                                             </div>
                                         ))}
                                 </div>

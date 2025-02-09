@@ -6,16 +6,23 @@ import {create} from 'zustand';
 //   bbox: number[];
 // }
 export interface BboxOverlay {
-  bbox: number[]
+  page: number;
+ bbox: Bbox;
 }
 
+export interface Bbox {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
 
 interface PdfText {
   page_number: number;
   sections: {
       text_and_bboxes: {
           text: string;
-          bbox: BboxOverlay;
+          bbox: Bbox;
       }[];
   }[];
 }
@@ -25,14 +32,15 @@ export interface PdfStore {
   setPdfUrl: (url: string) => void;
   pdf_text: PdfText[];
   setPdfText: (pdf_text: PdfText[]) => void;
-  transcript_bbox: BboxOverlay;
+  bbox_overlay: BboxOverlay | null;
+  setBboxOverlay: (bbox_overlay: BboxOverlay) => void;
 }
 
 export const usePdfStore = create<PdfStore>((set) => ({
   pdf_url: '', // Ensure this is initialized properly
   pdf_text: [],
-  transcript_bbox: {bbox: []},
+  bbox_overlay: null,
   setPdfText: (pdf_text: PdfText[]) => set({ pdf_text }),
   setPdfUrl: (pdf_url: string) => set({ pdf_url }), // Ensure URL updates
-  setTranscriptBbox: (transcript_bbox: BboxOverlay) => set({transcript_bbox}),
+  setBboxOverlay: (bbox_overlay: BboxOverlay) => set({ bbox_overlay }),
 }));
