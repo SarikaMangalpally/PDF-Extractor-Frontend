@@ -28,14 +28,13 @@ export default function PDFRenderer({ bboxOverlay }: PDFRendererProps) {
     const renderHighlights = (props: RenderHighlightsProps) => {
 
         if (bboxOverlay?.page === props.pageIndex) {
-            // Create custom highlight styles
+
             const highlightStyles: React.CSSProperties = {
                 position: 'absolute', 
                 left: x0-20,
                 top: y0-18,
                 width: x1-x0,
                 height: y1-y0,
-                // zIndex: 10, 
             };
 
             return (
@@ -61,7 +60,6 @@ export default function PDFRenderer({ bboxOverlay }: PDFRendererProps) {
                         <Viewer
                             fileUrl={pdf_url}
                             plugins={[defaultLayoutPluginInstance, highlightPluginInstance]}
-                            
                             defaultScale={SpecialZoomLevel.PageFit}
                         />
                     </div>

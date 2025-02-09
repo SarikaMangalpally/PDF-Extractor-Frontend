@@ -1,6 +1,4 @@
-import {  usePdfStore, type Bbox, BboxOverlay,} from "../store/usePdfStore"
-// import { useState } from "react"
-
+import { usePdfStore, type BboxOverlay } from "../store/usePdfStore"
 interface TranscriptViewerProps {
     onBboxClick: (bbox: BboxOverlay) => void;
 }
