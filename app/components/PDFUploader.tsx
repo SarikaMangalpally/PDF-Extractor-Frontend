@@ -40,13 +40,13 @@ export default function PDFUploader() {
         <div className='w-full max-w-screen-lg mx-auto px-5'>
             <form onSubmit={handleSubmit} className='flex space-x-4 justify-between'>
                 <input
-                className='border-2 border-black/10 p-2 rounded-sm w-3/4 focus:outline-none'
+                className='border-2 border-black/10 p-2 rounded-sm w-4/5 focus:outline-none focus:border-blue-400'
                 value={inputUrl}
                 type="url" 
                 name="pdf_url"
                 onChange={(e) => setInputUrl(e.target.value)}
                 />
-                <button type="submit" className="w-1/4 bg-black text-white py-1 rounded-sm">Upload PDF</button>
+                <button type="submit" className="w-1/5 bg-black text-white py-1 rounded-sm active:scale-75">Upload PDF</button>
             </form>
         </div>
     )
