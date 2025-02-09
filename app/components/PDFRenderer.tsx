@@ -32,7 +32,7 @@ export default function PDFRenderer({ bboxOverlay }: PDFRendererProps) {
             const highlightStyles: React.CSSProperties = {
                 position: 'absolute', 
                 left: x0-10,
-                top: y0-6,
+                top: y0-10,
                 width: x1-x0,
                 height: y1-y0,
             };
