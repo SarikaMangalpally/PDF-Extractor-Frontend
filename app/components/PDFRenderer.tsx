@@ -55,15 +55,14 @@ export default function PDFRenderer({ bboxOverlay }: PDFRendererProps) {
     return (
         <div className="relative w-full">
             <Worker workerUrl={`/pdf.worker.min.js`}>
-                {pdf_url && (
-                    <div className="relative">
-                        <Viewer
-                            fileUrl={pdf_url}
-                            plugins={[defaultLayoutPluginInstance, highlightPluginInstance]}
-                            defaultScale={SpecialZoomLevel.PageFit}
-                        />
-                    </div>
-                )}
+            {pdf_url ? (
+                <Viewer
+                    fileUrl={pdf_url}
+                    plugins={[defaultLayoutPluginInstance, highlightPluginInstance]}
+                    defaultScale={SpecialZoomLevel.PageFit}
+                    // ref={viewerRef}
+                    // onZoom={handleZoom}
+                />  ): ''}
             </Worker>
         </div>
     );
