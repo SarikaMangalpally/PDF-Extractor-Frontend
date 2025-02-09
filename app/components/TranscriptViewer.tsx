@@ -1,4 +1,4 @@
-import { usePdfStore, type BboxOverlay } from "../store/usePdfStore"
+import { Bbox, usePdfStore, type BboxOverlay } from "../store/usePdfStore"
 interface TranscriptViewerProps {
     onBboxClick: (bbox: BboxOverlay) => void;
 }
