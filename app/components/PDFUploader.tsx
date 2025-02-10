@@ -8,6 +8,7 @@ export default function PDFUploader() {
     const [inputUrl, setInputUrl] = useState('');
     const setPdfText = usePdfStore((state) => state.setPdfText);
     const setPdfUrl = usePdfStore((state) => state.setPdfUrl);
+    const setIsLoading = usePdfStore((state)=> state.setIsLoading);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -16,8 +17,8 @@ export default function PDFUploader() {
             return;
         }
         try {
-            
             try {
+                setIsLoading(true);
                 const response = await uploadURL(inputUrl);
                 if (response.status === 200) {
                     console.log("PDF uploaded response: ", response.data);
@@ -25,8 +26,10 @@ export default function PDFUploader() {
                     // const TranscriptData = (response.data as { data: { text: string, bbox: number[], page_number: number, sections: any[] }[] });
                     setPdfText(TranscriptData);
                     setPdfUrl(inputUrl);
+                    setIsLoading(false);
                 } 
             } catch (error) {
+                setIsLoading(false);
                 console.error("Error processing PDF", error);
                 alert("Error processing PDF. Please try again.");
             }
