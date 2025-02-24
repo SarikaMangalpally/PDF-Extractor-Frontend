@@ -16,7 +16,9 @@ export const uploadURL = (url: string) => {
                     { pdf_url: url },
                     { 
                       headers: { 'Content-Type': 'application/json' }, 
-                      withCredentials: true});
+                      withCredentials: true
+                    }
+                   );
 };
 
 export const getUrlText = (url: string) => {
