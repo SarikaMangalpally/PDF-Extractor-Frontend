@@ -12,7 +12,11 @@ export const uploadURL = (url: string) => {
   if (!url || !url.toLowerCase().endsWith(".pdf")) {
     throw new Error("Invalid URL: must be a valid PDF URL.");
   }
-  return axios.post(`${API_URL}/extract`, { pdf_url: url }, { headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }, withCredentials: true});
+  return axios.post(`${API_URL}/extract`,
+                    { pdf_url: url },
+                    { 
+                      headers: { 'Content-Type': 'application/json' }, 
+                      withCredentials: true});
 };
 
 export const getUrlText = (url: string) => {
